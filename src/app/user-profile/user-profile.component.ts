@@ -8,7 +8,7 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-
+userProfileData:Array<any>=[];
 userProfileForm = this.fb.group({
             firstName:['',Validators.required],
             lastName:[''],
@@ -24,6 +24,8 @@ userProfileForm = this.fb.group({
 
 formSubmit(){
   console.warn(this.userProfileForm.value);
+  this.userProfileData.push(this.userProfileForm.value);
+  console.log(this.userProfileData[0]);
 }
   ngOnInit() {
   }

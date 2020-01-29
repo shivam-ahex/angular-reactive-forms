@@ -22,6 +22,26 @@
 <button type="submit" [disabled]="!userProfileForm.valid">Submit</button>
 </form>
 
+<div class="dataTable">
+<table class="userTable">
+<tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Street</th>
+<th>city</th>
+<th>State</th>
+<th>Pin Code</th>
+</tr>
+<tr *ngFor="let user of userProfileData">
+<td>{{user.firstName}}</td>
+<td>{{user.lastName}}</td>
+<td>{{user.address.street}}</td>
+<td>{{user.address.city}}</td>
+<td>{{user.address.state}}</td>
+<td>{{user.address.pinCode}}</td>
+</tr>
+</table>
+</div>
 
 
 
