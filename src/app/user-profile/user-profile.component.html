@@ -33,6 +33,7 @@
 <th>city</th>
 <th>State</th>
 <th>Pin Code</th>
+<th>Remove User </th>
 </tr>
 <tr *ngFor="let user of userProfileData">
 <td>{{user.firstName}}</td>
@@ -41,6 +42,8 @@
 <td>{{user.address.city}}</td>
 <td>{{user.address.state}}</td>
 <td>{{user.address.pinCode}}</td>
+<td><button type="button" (click)="removeRow(user)">Delete</button></td>
+
 </tr>
 </table>
 </div>

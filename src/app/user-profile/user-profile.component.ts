@@ -26,9 +26,12 @@ userProfileForm = this.fb.group({
   constructor(private fb: FormBuilder) { }  /**Adding formbuilder class */
 /** Method for submitting form data */
 formSubmit(){
-  console.warn(this.userProfileForm.value);
   this.userProfileData.push(this.userProfileForm.value);
-  console.log(this.userProfileData[0]);
+}
+/**Method to remove the row from user table */
+removeRow(user){
+  const index = this.userProfileData.indexOf(user);
+  this.userProfileData.splice(index,1);
 }
   ngOnInit() {
   }
