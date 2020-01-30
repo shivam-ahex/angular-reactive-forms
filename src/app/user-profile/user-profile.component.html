@@ -1,3 +1,4 @@
+<!--User form loads data on submission-->
 <form [formGroup]="userProfileForm" (ngSubmit)="formSubmit()">
 <label>First Name: 
 <input type="text"  formControlName="firstName"  required/>
@@ -20,8 +21,9 @@
 </label>
 </div>
 <button type="submit" [disabled]="!userProfileForm.valid">Submit</button>
+<button type="button" (click)="userProfileForm.reset()">New User</button>  <!--Reseting the user form-->
 </form>
-
+<!--User table loading the user data-->
 <div class="dataTable">
 <table class="userTable">
 <tr>
