@@ -1,0 +1,89 @@
+<!--User form loads data on submission-->
+<form [formGroup]="userProfileForm" (ngSubmit)="formSubmit()">
+    <div class="form-group">
+        <label> Name: </label>
+        <input type="text" formControlName="name" class="form-control" required/>
+        <div *ngIf="!name?.valid && (name?.dirty ||name?.touched || isSubmit)" class="error">
+            <div [hidden]="!name.errors.required">
+                First Name is required
+            </div>
+            <div [hidden]="!name.errors.minlength">
+                Min Length is 10
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> Mobile Number: </label>
+        <input type="number" formControlName="mobileNumber" class="form-control" required/>
+        <div *ngIf="!mobileNumber.valid && (mobileNumber.dirty ||mobileNumber.touched || isSubmit)" class="error">
+            <div [hidden]="!mobileNumber.errors.required">
+                mobile is required
+            </div>
+            <div [hidden]="!mobileNumber.errors.pattern">
+                invalid mobile number
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> E-mail: </label>
+        <input type="email" formControlName="email" class="form-control" required/>
+        <div *ngIf="!email.valid && (email.dirty ||email.touched || isSubmit)" class="error">
+            <div [hidden]="!email.errors.required">
+                email is required
+            </div>
+            <div [hidden]="!email.errors.email">
+                invalid email id
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Gender: </label>
+        <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+        <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+        <div *ngIf="!gender.valid && (gender.dirty ||gender.touched || isSubmit)" class="error">
+            <div [hidden]="!gender.errors.required">
+                gender is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="country">Country </label>
+
+        <select name="country" id="" formControlName="country" class="form-control">
+            <option value="">select</option>
+            <option *ngFor="let country of countries" [ngValue]="country.id">{{country.name}}</option>
+        </select>
+        <div *ngIf="!country.valid && (country.dirty ||country.touched || isSubmit)" class="error">
+            <div [hidden]="!country.errors.required">
+                country is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea type="text" name="description" formControlName="description" class="form-control"></textarea>
+
+        <div *ngIf="!description.valid && (description.dirty ||description.touched || isSubmit)" class="error">
+            <div [hidden]="!description.errors.required">
+                description is required
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="isMarried">Married </label>
+        <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
+
+        <div *ngIf="!isMarried.valid && (isMarried.dirty ||isMarried.touched || isSubmit)" class="error">
+            <div [hidden]="!isMarried.errors.required">
+                isMarried is required
+            </div>
+        </div>
+    </div>
+    <p>{{userProfileForm.valid}} </p>
+    <p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </p>
+    <!--Reseting the user form-->
+</form>
